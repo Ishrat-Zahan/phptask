@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Indices</title>
+</head>
+
+<body>
+
+    <p id="resultMessage">Result will be displayed here.</p>
+
+    <script>
+
+        function findIndices(list, number) {
+
+            let result = null;
+
+            for (let i = 0; i < list.length - 1; i++) {
+
+                for (let j = i + 1; j < list.length; j++) {
+
+                    if (list[i] + list[j] === number) {
+                       
+                        result = [i, j];
+                        break;
+                    }
+                }
+
+                if (result !== null) {
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+
+        const list = [1, 2, 4, 7, 10, 13];
+        const number = 20;
+
+        const result = findIndices(list, number);
+        const resultMessage = document.getElementById("resultMessage");
+
+        if (result !== null) {
+
+            resultMessage.textContent = `Indices with number ${number}: [${result[0]}, ${result[1]}]`;
+
+        } else {
+
+            resultMessage.textContent = `No indices found with number ${number}`;
+        }
+
+    </script>
+
+</body>
+
+</html>
